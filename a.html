@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yasith Aluthgama — E-Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0a1f44; /* Dark Blue */
+      --secondary: #1f3c88; /* Lighter Blue */
+      --accent: #4db5ff; /* Bright Accent */
+      --light: #f4f7fa;
+      --card-bg: #112c5b;
+      --max-width: 1100px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--primary), #071833);
+      color: var(--light);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+    }
+    header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      animation: fadeDown 1.2s ease;
+    }
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #cfd9e6;
+      animation: fadeUp 1.5s ease;
+    }
+
+    /* Profile Image */
+    .profile {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      box-shadow: 0 0 20px var(--accent);
+      object-fit: cover;
+      margin-bottom: 20px;
+      animation: fadeDown 1.5s ease;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      animation: fadeUp 2s ease;
+    }
+    .btn:hover {
+      background: #3897e0;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    section {
+      max-width: var(--max-width);
+      margin: 70px auto;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s forwards;
+    }
+    section h2 {
+      font-size: 30px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      text-align: center;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      display: block;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+
+    p, li { color: #dbe3f0; font-size: 16px; }
+
+    ul { margin: 12px 0 0 20px; }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-6px); }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    /* Portfolio */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .thumb:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Contact */
+    .contact-form {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+    .contact-form button {
+      background: var(--accent);
+      border: none;
+      padding: 14px 20px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background: #3897e0;
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      background: #071833;
+      color: #bbb;
+    }
+
+    /* Decorations */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(77,181,255,0.15);
+      animation: float 6s ease-in-out infinite;
+    }
+    .circle.small { width: 100px; height: 100px; top: 60px; left: 20px; }
+    .circle.large { width: 220px; height: 220px; top: 200px; right: 50px; }
+
+    /* Animations */
+    @keyframes fadeDown { from {opacity: 0; transform: translateY(-40px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes fadeUp { from {opacity: 0; transform: translateY(40px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes fadeInUp { to {opacity: 1; transform: translateY(0);} }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    @media(max-width:768px) {
+      header h1 { font-size: 32px; }
+      header p { font-size: 16px; }
+      .profile-pic { width: 140px; height: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header>
+    <div class="circle small"></div>
+    <div class="circle large"></div>
+
+    <!-- Profile Image -->
+    <img src="your-photo.jpg" alt="Yasith Aluthgama" class="profile-pic">
+
+    <h1>Yasith Aluthgama</h1>
+    <p>BSc (Hons) Biotechnology Undergraduate | Future Agricultural Scientist</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate biotechnology undergraduate with a strong interest in molecular biology, genetics, and agricultural biotechnology. My aim is to combine research and practical applications to develop sustainable solutions for global agricultural challenges.</p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <ul>
+        <li><strong>BSc (Hons) in Biotechnology</strong> — SLIIT<br> Modules: Molecular Biology, Genetic Engineering, Microbiology, Bioprocess Engineering, Analytical Chemistry.</li>
+        <li><strong>Diploma in Information Technology</strong> — ESOFT<br> Skills: Programming, Databases, Networking, IT Applications.</li>
+        <li><strong>Advanced Level</strong> — Biological Science Stream<br> Pinnawala Central College.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="card">
+        <h3>Technical Skills</h3>
+        <ul>
+          <li>PCR & Gel Electrophoresis</li>
+          <li>ELISA & Spectrophotometry</li>
+          <li>Aseptic Techniques</li>
+          <li>DNA/RNA Extraction</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Soft Skills</h3>
+        <ul>
+          <li>Critical Thinking & Problem Solving</li>
+          <li>Teamwork & Collaboration</li>
+          <li>Scientific Communication</li>
+          <li>Time Management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <div class="grid">
+      <div class="thumb"><img src="https://via.placeholder.com/600x400" alt="Project 1"></div>
+      <div class="thumb"><img src="https://via.placeholder.com/600x400" alt="Project 2"></div>
+      <div class="thumb"><img src="https://via.placeholder.com/600x400" alt="Project 3"></div>
+      <div class="thumb"><img src="https://via.placeholder.com/600x400" alt="Project 4"></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <div class="card">
+      <ul>
+        <li>Presented research at Biotechnology Symposium (Faculty Level)</li>
+        <li>Active Member of the Science Society</li>
+        <li>Volunteer in University Sustainability Programs</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Yasith Aluthgama | Biotechnology E-Portfolio
+  </footer>
+
+</body>
+</html>
